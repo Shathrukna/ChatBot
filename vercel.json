@@ -1,0 +1,11 @@
+{
+  "functions": {
+    "api/chat.js": { "maxDuration": 60 },
+    "api/reset.js": { "maxDuration": 60 }
+  },
+  "rewrites": [
+    { "source": "/", "destination": "/public/index.html" },
+    { "source": "/style.css", "destination": "/public/style.css" },
+    { "source": "/app.js", "destination": "/public/app.js" }
+  ]
+}
