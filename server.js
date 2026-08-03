@@ -1,5 +1,7 @@
 import express from "express";
 import crypto from "node:crypto";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { streamDeltas, getApiKey } from "./lib/openrouter.js";
 import {
   getSession,
@@ -10,7 +12,9 @@ import {
 
 const app = express();
 app.use(express.json({ limit: "25mb" }));
-app.use(express.static("public"));
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.join(__dirname, "public")));
 
 function sendSSE(res, obj) {
   res.write(`data: ${JSON.stringify(obj)}\n\n`);
